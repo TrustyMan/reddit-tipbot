@@ -1,3 +1,4 @@
+#!/usr/bin/env python2
 from praw.models import Message
 import praw
 import subprocess
