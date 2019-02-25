@@ -6,12 +6,12 @@ import os
 import config
 
 #daemon core
-core = "/home/akra/Documents/ronpaulcoind"
+core = "/home/RonTipsProject/ronpaulcoind"
 
 # bot configuration
 apikey = '03LhM59M6BF4pg'
 secretkey = 'wN9lCCQla2DRvkQZ60jX0-ImGEY'
-botname = 'RPCtipprBot'
+botname = 'RonTips4Liberty'
 bot_pw = 'Serbialovescrypto2019!'
 bot_agent = 'bot by vladan'
 subreddit_name = 'RonTips4Liberty'
