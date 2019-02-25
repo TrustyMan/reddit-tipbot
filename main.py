@@ -5,7 +5,7 @@ import os
 import config
 
 #daemon core
-core = "/home/akra/Documents/ronpaulcoind"
+core = "/home/RonTipsProject/ronpaulcoind"
 
 # bot configuration
 apikey = '03LhM59M6BF4pg'
