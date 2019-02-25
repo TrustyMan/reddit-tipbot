@@ -8,11 +8,11 @@ import config
 core = "/home/akra/Documents/ronpaulcoind"
 
 # bot configuration
-apikey = 'kA3NkYaMH6Bx9w'
-secretkey = 'ZXWdQLfYm8eCFSxRcjeCUmJBthc'
-botname = 'RPCtipprBot'
-bot_pw = '4yr6R6ReayJN59z'
-bot_agent = 'bot by /u/RPCtipprBot'
+apikey = '03LhM59M6BF4pg'
+secretkey = 'wN9lCCQla2DRvkQZ60jX0-ImGEY'
+botname = 'RonTips4Liberty'
+bot_pw = 'Serbialovescrypto2019!'
+bot_agent = 'bot by vladan'
 subreddit_name = 'RonTips4Liberty'
 
 # look for phrase and reply appropriately

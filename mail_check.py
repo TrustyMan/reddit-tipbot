@@ -12,7 +12,7 @@ core = "/home/akra/Documents/ronpaulcoind"
 apikey = '03LhM59M6BF4pg'
 secretkey = 'wN9lCCQla2DRvkQZ60jX0-ImGEY'
 botname = 'RPCtipprBot'
-bot_pw = '4yr6R6ReayJN59z'
+bot_pw = 'Serbialovescrypto2019!'
 bot_agent = 'bot by vladan'
 subreddit_name = 'RonTips4Liberty'
 
