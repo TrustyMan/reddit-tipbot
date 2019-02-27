@@ -36,9 +36,10 @@ def run_bot(reddit):
         for item in reddit.inbox.unread(limit=None):
             if isinstance(item, Message):
                 unread_messages.append(item)
-                logfile.write('command message: {0}'.format(item.body))
-                accountStr = 'reddit-{0}'.format(item.author.name.lower())
-                logfile.write('wallet accountname: {0}'.format(accountStr))
+                print item.body
+                logfile.write("command message: {0}".format(item.body).encode('utf-8'))
+                accountStr = "reddit-{0}".format(item.author.name.lower())
+                logfile.write("wallet accountname: {0}".format(accountStr))
                 if 'balance' in item.body.lower():
                     if len(item.body.split())==1:
                         # get balance data by running daemon ronpaulcoind

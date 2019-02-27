@@ -4,7 +4,7 @@ import subprocess
 import time
 import os
 import config
-import requests
+# import requests
 
 #daemon core
 core = "/home/RonTipsProject/ronpaulcoind"
@@ -60,7 +60,7 @@ def run_bot(reddit, comments_replied_to, subreddits_list):
 
 
 def tip(reddit, comment, logfile):
-    logfile.write('it is inside tip function\n')
+    print 'it is inside tip function\n'
     sender = comment.author.name
     if len(comment.body.split()) == 3:
         amount = comment.body.split()[1]
@@ -70,9 +70,11 @@ def tip(reddit, comment, logfile):
             if receiver[0]=='/' and receiver[1]=='u' and receiver[2]=='/':
                 try:
                     receiver = receiver[3:]
-                    validflag = requests.get('https://www.reddit.com/user/{0}.json'.format(receiver))
+                    print "receiver:"
+                    print receiver
+                    user = reddit.redditor(receiver)
                     try:
-                        if validflag.error != 404:
+                        if user.id: # if it is valid user
                             senderStr = 'reddit-{0}'.format(sender)
                             receiverStr = 'reddit-{0}'.format(receiver)
                             result = subprocess.check_output([core,"getbalance", senderStr])[:-1]
@@ -101,12 +103,10 @@ def tip(reddit, comment, logfile):
                                 # reddit.redditor(sender).message('Tip', "@{0} tipped @{1}RPC to @{2}".format(sender, amount, receiver))
                                 reddit.redditor(receiver).message('Tipped', "{0} tipped {1}RPC to {2}".format(sender, amount, receiver))
                                 logfile.write("{0} tipped {1}RPC to {2}".format(sender, amount, receiver))
-                        else:
-                            reddit.redditor(sender).message('Tip error', "{0} is not valid reddit user.".format(receiver))
-                            logfile.write("Tip error\n{0} is not valid reddit user.".format(receiver))
                     except:
-                        reddit.redditor(sender).message('Tip error', "{0} is not valid reddit user.".format(receiver))
-                        logfile.write("Tip error\n{0} is not valid reddit user.".format(receiver))
+                        reddit.redditor(sender).message('Tip error', "Invalid user error!")
+                        logfile.write("Invalid user error!")
+                        print "Invalid user error!"
                 except Exception as ex:
                     template = "An exception of type {0} occurred. Arguments:\n{1!r}"
                     message = template.format(type(ex).__name__, ex.args)
