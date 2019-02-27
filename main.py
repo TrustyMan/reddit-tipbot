@@ -61,7 +61,7 @@ def run_bot(reddit, comments_replied_to, subreddits_list):
 
 def tip(reddit, comment, logfile):
     print 'it is inside tip function\n'
-    sender = comment.author.name
+    sender = comment.author.name.lower()
     if len(comment.body.split()) == 3:
         amount = comment.body.split()[1]
         try:
