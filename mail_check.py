@@ -44,18 +44,18 @@ def run_bot(reddit):
                     if len(item.body.split())==1:
                         # get balance data by running daemon ronpaulcoind
                         balance = subprocess.check_output([core,"getbalance", accountStr])[:-1]
-                        reddit.redditor(item.author.name).message('Balance', balance)
-                        logfile.write('balance of {0} is {1}\n'.format(item.author.name.lower(), balance))
+                        reddit.redditor(item.author.name).message('Balance', 'Your balance is {0} RPC'.format(balance))
+                        logfile.write('Your balance is {0}RPC\n'.format(balance))
                     else:
                         reddit.redditor(item.author.name).message('Balance error', 'Usage in PM: `balance`')
                         logfile.write('Balance error: \nUsage in PM: `balance`\n')
                 elif 'deposit' in item.body.lower():
                     if len(item.body.split())==1:
                         deposit = subprocess.check_output([core,"getaccountaddress", accountStr])[:-1]
-                        reddit.redditor(item.author.name).message('Deposit', "Your depositing address is: {0}".format(deposit))
-                        logfile.write('Deposit\nYour depositing Your depositing address is: {0}'.format(deposit))
+                        reddit.redditor(item.author.name).message('Deposit', "Your Ron Paul Coin depositing address is: {0}".format(deposit))
+                        logfile.write('Deposit\nYour Ron Paul Coin depositing address is: {0}'.format(deposit))
                     else:
-                        reddit.redditor(item.author.name).message('Deposit error', "Usage in PM: `deposit`")
+                        reddit.redditor(item.author.name).message('Deposit error', "To deposit your Ron Paul Coin please PM the following: deposit")
                         logfile.write('Deposit error\nUsage in PM: `deposit`')
                 elif 'withdraw' in item.body.lower():
                     if len(item.body.split())==3:
@@ -72,14 +72,14 @@ def run_bot(reddit):
                                 # sendfrom <fromaccount> <toronpaulcoinaddress> <amount> [minconf=1] [comment] [comment-to]
                                 tx = subprocess.check_output([core,"sendfrom",accountStr,address,amount])[:-1]
                                 # {0} has successfully withdrew to address: {1} of {2} RDD"
-                                reddit.redditor(item.author.name).message('Withdraw success', "You have successfully withdrew to address: {0} of {1} RPC".format(address,amount))
-                                logfile.write('Withdraw success\nYou have successfully withdrew to address: {0} of {1} RPC'.format(address,amount))
+                                reddit.redditor(item.author.name).message('Withdraw success', "You have successfully withdrawn {0} RPC to address: {1}".format(amount,address))
+                                logfile.write('Withdraw success\nYou have successfully withdrawn {0} RPC to address: {1}'.format(amount,address))
                         except ValueError:
-                            reddit.redditor(item.author.name).message('Withdraw error', "Usage in PM: `withdraw <amount> <address>`")
-                            logfile.write('Withdraw error\nUsage in PM: `withdraw <amount> <address>`')
+                            reddit.redditor(item.author.name).message('Withdraw error', 'To withdraw your Ron Paul Coin please PM the following: withdraw <amount> <address>')
+                            logfile.write('Withdraw error\nTo withdraw your Ron Paul Coin please PM the following: withdraw <amount> <address>')
                     else:
-                        reddit.redditor(item.author.name).message('Withdraw error', "Usage in PM: `withdraw <amount> <address>`")
-                        logfile.write('Withdraw error\nUsage in PM: `withdraw <amount> <address>`')
+                        reddit.redditor(item.author.name).message('Withdraw error', 'To withdraw your Ron Paul Coin please PM the following: withdraw <amount> <address>')
+                        logfile.write('Withdraw error\nTo withdraw your Ron Paul Coin please PM the following: withdraw <amount> <address>')
     reddit.inbox.mark_read(unread_messages)
     reddit.inbox.collapse(unread_messages)
     time.sleep(10)

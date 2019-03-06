@@ -101,7 +101,7 @@ def tip(reddit, comment, logfile):
                                 tx = subprocess.check_output([core,"move",senderStr,receiverStr,amount])[:-1]
                                 # comment.reply("@{0} tipped @{1}RPC to @{2}".format(sender, amount, receiver))
                                 # reddit.redditor(sender).message('Tip', "@{0} tipped @{1}RPC to @{2}".format(sender, amount, receiver))
-                                reddit.redditor(receiver).message('Tipped', "{0} tipped {1}RPC to {2}".format(sender, amount, receiver))
+                                reddit.redditor(receiver).message('Tipped', "{0} tipped you {1} of Ron Paul Coin via the RonTips4Liberty tipping bot. For  instructions on how to withdraw, tip other users & more, visit https://www.reddit.com/r/RonTips4Liberty/wiki/index".format(sender, amount))
                                 logfile.write("{0} tipped {1}RPC to {2}".format(sender, amount, receiver))
                     except:
                         reddit.redditor(sender).message('Tip error', "Invalid user error!")
